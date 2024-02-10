@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>random number</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      input {
+        margin-bottom: 10px;
+        padding: 5px 20px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 5px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #result {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      #score {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="number" id="userNumber" min="1" max="10" />
+
+    <button onclick="calculate()">Calculate!</button>
+    <p id="result"></p>
+    <br />
+    <p>your chances remaining:</p>
+    <p id="score"></p>
+
+    <script>
+      var countvalue = 10;
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+      function calculate() {
+        const inputValue = document.getElementById("userNumber").value;
+
+        console.log(randomNumber);
+        if (randomNumber == inputValue) {
+          document.getElementById("result").textContent = "correct";
+          document.getElementById("result").innerText = "chances are over";
+        } else {
+          countvalue--;
+          if (countvalue != 0) {
+            document.getElementById("result").textContent = "wrong";
+            document.getElementById("score").textContent = countvalue;
+          } else {
+            document.getElementById("result").innerText = "chances are over";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
